@@ -1,1 +1,2 @@
-# Zarodolgozat-2025-2026_Test
+# _Zarodolgozat-2025-2026
+Szoftver fejlesztő és tesztelői záródolgozat.
