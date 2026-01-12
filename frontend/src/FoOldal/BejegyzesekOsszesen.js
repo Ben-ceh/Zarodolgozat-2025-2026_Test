@@ -14,6 +14,9 @@ const BejegyzesekOsszesen = () => {
   const [kommentek, setKommentek] = useState({});
   const [loadingKomment, setLoadingKomment] = useState({});
   const [commentInputs, setCommentInputs] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedGroup, setSelectedGroup] = useState("all");
+
 
   const formatRelativeTime = (iso) => {
     const now = new Date();
@@ -145,8 +148,48 @@ const BejegyzesekOsszesen = () => {
   if (hiba) return <div>Hiba történt</div>;
 
   return (
-    <div>
-      {adatok.map((elem, index) => (
+    <div className="card mb-3 p-3">
+  <div className="d-flex gap-3 flex-wrap">
+
+    {/* Category filter */}
+    <select
+      className="form-select"
+      style={{ maxWidth: "200px" }}
+      value={selectedCategory}
+      onChange={(e) => setSelectedCategory(e.target.value)}
+    >
+      <option value="all">All categories</option>
+      <option value="road">🚧 Road info</option>
+      <option value="news">📰 General news</option>
+      <option value="alert">⚠ Alerts</option>
+    </select>
+
+    {/* Group filter */}
+    <select
+      className="form-select"
+      style={{ maxWidth: "200px" }}
+      value={selectedGroup}
+      onChange={(e) => setSelectedGroup(e.target.value)}
+    >
+      <option value="all">All groups</option>
+      <option value="Budapest">Budapest</option>
+      <option value="M1">M1 Highway</option>
+      <option value="Szeged">Szeged</option>
+    </select>
+
+ 
+      {adatok.filter((elem) => {
+      const categoryOk =
+      selectedCategory === "all" ||
+      elem.kategoria === selectedCategory;
+
+    const groupOk =
+      selectedGroup === "all" ||
+      elem.csoport_nev === selectedGroup;
+
+    return categoryOk && groupOk;
+  })
+  .map((elem, index) => (
         <div key={elem.bejegyzesek_id} className="bejegyzesKartya">
 
           {/* HEADER */}
@@ -278,6 +321,8 @@ const BejegyzesekOsszesen = () => {
         </div>
       ))}
     </div>
+     </div>
+
   );
 };
 

@@ -1,3 +1,28 @@
+/* Sidebar eleje */
+.sidebar {
+  width: 240px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  height: fit-content;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.sidebar-link:hover {
+  background-color: #f0f2f5;
+  color: #000;
+}
+/* Sidebar vége */
+
 h1, h2, h3 {
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   
@@ -121,6 +146,7 @@ h1,h2 {
   object-fit: cover;
 }
 .bejegyzesKartya {
+  max-width: 100%;
   background: #ffffff;
   border-radius: 12px;
   padding: 16px;

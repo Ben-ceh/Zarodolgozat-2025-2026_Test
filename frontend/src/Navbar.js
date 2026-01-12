@@ -28,7 +28,7 @@ const Navbar = () => {
           ☰
         </button>
         <div style={{margin:"auto"}} className={`menu ${menuOpen ? "open" : ""}`}>
-          <button className='rounded'></button>
+          
           <Link to="/FoOldal" className="link" onClick={() => setMenuOpen(false)}>
             FőOldal
           </Link>

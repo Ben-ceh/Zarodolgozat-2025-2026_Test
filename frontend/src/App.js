@@ -15,6 +15,10 @@ import Admin from './Admin/Admin';
 import User from './User/User';
 //FőOldal menü
 import FoOldal from './FoOldal/FoOldal';
+//Sidebar
+import Sidebar from "./Sidebar/Sidebar";
+//MainLayout menü
+import MainLayout from './MainLayout/MainLayout';
 // BejegyzésTörlése
 import BejegyzesTorles from './BejegyzesTorles/BejegyzesTorles';
 //Trágárszavak Törlése
@@ -46,10 +50,22 @@ function App() {
 
       <div className="app-container">
         <Routes>
-          <Route path="/" element={<Menu1 />} />
-          <Route path="/FoOldal"  element={<FoOldal />} />
-          <Route path="/Csoportjaim" element={<Csoportjaim />} />
+          <Route path="/" element={
+            <MainLayout>
+            <FoOldal />
+            </MainLayout>} />
 
+
+          <Route
+  path="/FoOldal"
+  element={
+    <MainLayout>
+      <FoOldal />
+    </MainLayout>
+  }
+/>
+          <Route path="/Csoportjaim" element={<Csoportjaim />} />
+          <Route path="/User" element={<User />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
