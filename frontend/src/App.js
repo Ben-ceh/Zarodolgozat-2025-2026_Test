@@ -11,8 +11,8 @@ import Register from './Register';
 import Menu1 from './Menu1/Menu1';
 //Admin menük
 import Admin from './Admin/Admin';
-//User menük
-import User from './User/User';
+
+
 //FőOldal menü
 import FoOldal from './FoOldal/FoOldal';
 //Sidebar
@@ -29,6 +29,8 @@ import HozzaszolasTorlese from './BejegyzesTorles/HozzaszolasTorlese';
 import FelhasznaloTorlese from './BejegyzesTorles/FelhasznaloTorlese';
 //Csoportjaim lista
 import Csoportjaim from './Csoportjaim/Csoportjaim';
+//User Főoldal
+import UserFoOldal from './User/UserFoOldal';
 
 const ProtectedRoute = ({ children, role }) => {
   const token = localStorage.getItem("token");
@@ -64,8 +66,16 @@ function App() {
     </MainLayout>
   }
 />
+<Route
+  path="/User"
+  element={
+    <MainLayout>
+      <UserFoOldal />
+    </MainLayout>
+  }
+/>
           <Route path="/Csoportjaim" element={<Csoportjaim />} />
-          <Route path="/User" element={<User />} />
+          <Route path="/UserFoOldal" element={<UserFoOldal />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
