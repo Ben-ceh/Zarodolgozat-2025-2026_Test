@@ -71,7 +71,12 @@ app.post('/bejegyzesekKeresId', (req, res) => {
 app.get('/bejegyEsFelh', (req, res) => {
         const sql=`SELECT * from bejegyzesek 
         inner JOIN felhasznalok 
-        on bejegyzesek.felhasznalo_id = felhasznalok.felhasznalok_id;`
+        on bejegyzesek.felhasznalo_id = felhasznalok.felhasznalok_id
+        INNER JOIN bejegyzesek_kategoria
+        ON bejegyzesek_kategoria.kategoria_id = bejegyzesek.kategoria
+        INNER JOIN telepules
+        ON telepules.telepules_id = bejegyzesek.helyszin
+        Where bejegyzesek.csoport_id = 1;`
         pool.query(sql, (err, result) => {
         if (err) {
             console.log(err)

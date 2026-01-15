@@ -145,6 +145,10 @@ h1,h2 {
   border-radius: 50%;
   object-fit: cover;
 }
+.bejegyzesKategoria{
+  color: gray;
+  
+}
 .bejegyzesKartya {
   max-width: 100%;
   background: #ffffff;

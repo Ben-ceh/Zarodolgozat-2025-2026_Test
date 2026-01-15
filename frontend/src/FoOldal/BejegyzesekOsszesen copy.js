@@ -61,14 +61,15 @@ const BejegyzesekOsszesen = () => {
     };
     leToltes();
   }, []);
-
-const szovegem = "0";
+  
+const szovegem = true;
 const CommentingWithOutALogin = async (szoveg) => {
-    if (szovegem === "0") {
+    if (szovegem === true) {
       Swal.fire(`${szoveg}`,'Ismeretlen ként tudsz majd kommentelni, kérlek légy tisztelet teljes.<br></br>','Kérlek jelenkezz be <a href="/login">itt</a>.')
-        szovegem ="1";
+      szovegem=false;
     };
   };
+    
 
   const formatDate = (mysqlDate) =>
     mysqlDate ? mysqlDate.split("T")[0] : "";
@@ -94,9 +95,6 @@ const CommentingWithOutALogin = async (szoveg) => {
   };
 
   const komment = async (index, bejegyzesek_id) => {
-
-    CommentingWithOutALogin("Nem vagy bejelenkezve!")
-
     setExpanded2((prev) => ({ ...prev, [index]: !prev[index] }));
     const isOpening = !expanded2[index];
     if (isOpening && !kommentek[bejegyzesek_id]) {
@@ -129,13 +127,8 @@ const CommentingWithOutALogin = async (szoveg) => {
   const submitComment = async (bejegyzesek_id) => {
     const szoveg = (commentInputs[bejegyzesek_id] || "").trim();
     //If--------------------------- Ha nincs bejelenkezve akkor irjon ki egy uzenetet // else felvitel
-    
     if (!szoveg) return;
-    if(){
 
-    }else{
-      
-    }
     const now = new Date();
     const offsetDate = new Date(
       now.getTime() - now.getTimezoneOffset() * 60000
@@ -283,7 +276,6 @@ const CommentingWithOutALogin = async (szoveg) => {
             <button
               className="btn btn-outline-secondary btn-sm"
               onClick={() => komment(index, elem.bejegyzesek_id)}
-              
             >
               {expanded2[index] ? "Bezár" : "Kommentek"}
             </button>
@@ -326,7 +318,7 @@ const CommentingWithOutALogin = async (szoveg) => {
                   rows={2}
                   placeholder="Írj egy hozzászólást..."
                   value={commentInputs[elem.bejegyzesek_id] || ""}
-                  
+                  onClick={CommentingWithOutALogin("Nem vagy bejelenkezve!")}
                   onChange={(e) =>
                     onCommentInputChange(
                       elem.bejegyzesek_id,
